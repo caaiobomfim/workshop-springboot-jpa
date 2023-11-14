@@ -2,10 +2,12 @@ package com.projetospringboot.course.config;
 
 import com.projetospringboot.course.entities.Category;
 import com.projetospringboot.course.entities.Order;
+import com.projetospringboot.course.entities.Product;
 import com.projetospringboot.course.entities.User;
 import com.projetospringboot.course.entities.enums.OrderStatus;
 import com.projetospringboot.course.repositories.CategoryRepository;
 import com.projetospringboot.course.repositories.OrderRepository;
+import com.projetospringboot.course.repositories.ProductRepository;
 import com.projetospringboot.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -24,6 +26,8 @@ public class TestConfig implements CommandLineRunner {
     private OrderRepository orderRepository;
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -40,5 +44,12 @@ public class TestConfig implements CommandLineRunner {
         Category category2 = new Category(null, "Books");
         Category category3 = new Category(null, "Computers");
         categoryRepository.saveAll(Arrays.asList(category1, category2, category3));
+
+        Product product1 = new Product(null, "The Lord od the Rings", "Lorem ipsum", 90.5, "");
+        Product product2 = new Product(null, "Smart TV", "Nulla eu imperdiet", 2190.0, "");
+        Product product3 = new Product(null, "Macbook Pro", "Nam eleifend", 1250.0, "");
+        Product product4 = new Product(null, "PC Gamer", "Donec aliquet", 1200.0, "");
+        Product product5 = new Product(null, "Rails for Dummies", "Cras fringilla", 100.99, "");
+        productRepository.saveAll(Arrays.asList(product1, product2, product3, product4, product5));
     }
 }
